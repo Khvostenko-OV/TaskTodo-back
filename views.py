@@ -1,7 +1,7 @@
 import math
 import re
 
-from flask import jsonify, request, redirect, url_for
+from flask import jsonify, request
 from flask_login import current_user, login_user, logout_user
 from sqlalchemy import desc
 
@@ -14,11 +14,6 @@ from models import Task, User
 def after_request(response):
     response.headers.add('Access-Control-Allow-Credentials', 'true')
     return response
-
-
-@app.route('/')
-def index():
-    return redirect(url_for('task_list'))
 
 
 @app.route('/login', methods=['post'])
